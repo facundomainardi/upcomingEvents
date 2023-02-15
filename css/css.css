@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+main{
+margin-bottom: 2%;
+}
+
+
+#logo{
+    width: 6rem;
+    height: 2rem;
+}
+.navbar-text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 5rem;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+  
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.carrNav{
+    margin-top: 5%;
+    flex-shrink: 0;
+    width: 10%;
+    height: auto;
+}
+
+.formulariosi{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  
+}
+.formu{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: space-around;
+}
+form{
+    display: contents
+}
+.container{
+    margin-top: 2%;
+}
+
+[class^="col-8"]{
+    height: 50px;
+    margin-bottom:1px;
+    text-align:center;
+    line-height:50px;
+    color:#0e0d0d;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* .btn {
+    background-color: #ffbc0d;
+    border-color: transparent;
+} */
+
+.card-body {
+    text-align: center;
+}
+
+
+.card {
+    margin: 2%;
+   
+}
+
+.card-img-top {
+    
+        display: block;
+        max-width: 100%;
+        height: 10rem;
+      padding: 2%;
+}
+.img-fluid{
+    display: block;
+    height: 100%;
+}
+
+.details{
+    margin-top: 6%;
+    display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   /* width: 75rem;
+    height: 75rem; */
+    border-radius: 1rem;
+    transition: all 0.5s;
+    padding-left: 5%;
+    border-style: outset;
+}
+
+
+
+.details img{
+   
+    object-fit: cover;
+    
+    border-radius: 1rem 0 0 1rem;
+}
+
+
+
+/* .details div{
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details div h2{
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.details div p{
+    padding: 1rem;
+} */
+
+table, th, td {
+	border: 1px solid black;
+   
+}
+body{
+   
+    padding-bottom: 10%;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .formu {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        display: flex;
+        flex-direction: column;
+}
+body{
+   
+    padding-bottom: 30%;
+   
+  
+}
+}
+/*  */
