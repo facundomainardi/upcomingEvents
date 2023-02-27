@@ -4,10 +4,15 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
 }
+body{
+--bs-body-bg: aliceblue;
+}
 main{
 margin-bottom: 2%;
 }
-
+#flechas{
+    padding-left: 10%;
+}
 
 #logo{
     width: 6rem;
@@ -29,7 +34,7 @@ footer{
 .row{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .carrNav{
     margin-top: 5%;
@@ -49,10 +54,15 @@ footer{
     margin-bottom: 5%;
     display: flex;
     justify-content: space-around;
+    border-color: coral;
+    border-left-style: outset;
+    border-right-style: outset;
+    border-top-style: outset;
 }
 form{
     display: contents
 }
+
 .container{
     margin-top: 2%;
 }
@@ -155,6 +165,10 @@ body{
         margin-bottom: 5%;
         display: flex;
         flex-direction: column;
+        border-color: coral;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: outset;
 }
 body{
    
