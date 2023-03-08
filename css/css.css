@@ -58,6 +58,8 @@ footer{
     border-left-style: outset;
     border-right-style: outset;
     border-top-style: outset;
+    font-size: small;
+    flex-wrap: wrap;
 }
 form{
     display: contents

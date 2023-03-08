@@ -65,36 +65,16 @@
     </header>
 <main>
     <div class="container">
-        <div class="formu">
-        <form action="./show_data.html" method="get">
-           
-
-                
-                    <label>
-                    <input type="checkbox" name="forward" value="forward">
-                    Category
-                    </label>
-                    <label>
-
-                        <input type="checkbox" name="defense" value="defense">
-                        Category
-                    </label>
-                
-                
-                    <label>
-                        <input type="checkbox" name="midfield" value="midfield">
-                        Category
-                    </label>
-                    <label>
-
-                        <input type="checkbox" name="goalkeeper" value="goalkeeper">
-                        Category
-                    </label>
+        <div class="formu" >
+        <form name="categorias"  id="categorias" >         
+                  
+                   
               
                 </form>
 <div class="col-5">
             <div class="input-group rounded" >
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <input type="search" id="buscador" onkeyup="buscarPalabras()"
+                class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
                   <i class="fas fa-search"></i>
                 </span>
@@ -103,7 +83,8 @@
      
     </div>
     
-
+    </div>
+    <div id="msg"></div>
     
     <div class="container">
     
