@@ -25,8 +25,14 @@ function dataFilter(){
               chekboxesChecked
           .includes(tarjeta.category ) )             }     
   )
-  limpiarTarjetas()
-  dibujarTarjetas(eventosFiltrados)
+  if(eventosFiltrados.length == 0 && buscador.value.length !==0 ){
+    window.alert("NO SE ENCONTRARON COINCIDENCIAS");
+  }else{
+    
+    limpiarTarjetas()
+    dibujarTarjetas(eventosFiltrados)
+  }
+ 
 }
 
 function dibujarTarjetas(arrayActual){
