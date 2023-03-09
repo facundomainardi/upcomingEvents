@@ -1,6 +1,7 @@
 const rowTarjetas = document.querySelector("#cajas")
 const rowCategorias = document.querySelector("#categorias")
 let arrayCategorias = [];
+let eventosFiltrados= [];
 let categorias = " ";
 
 let tarjetas = " ";
@@ -12,6 +13,21 @@ eventosFuturos.forEach((tarjeta) => {
   if (!arrayCategorias.includes(tarjeta.category)) {
     arrayCategorias.push(tarjeta.category);
 }})
+
+function dataFilter(){
+  let chekboxesChecked = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(elemento => elemento.value)
+  eventosFiltrados = eventosFuturos.filter( tarjeta =>{
+    return (tarjeta.name.toLowerCase().includes(buscador.value.toLowerCase()) || 
+            tarjeta.description.toLowerCase().includes(buscador.value.toLowerCase())
+           )
+        && (  chekboxesChecked
+      .length === 0 || 
+              chekboxesChecked
+          .includes(tarjeta.category ) )             }     
+  )
+  limpiarTarjetas()
+  dibujarTarjetas(eventosFiltrados)
+}
 
 function dibujarTarjetas(arrayActual){
  
@@ -42,53 +58,53 @@ function dibujarTarjetas(arrayActual){
   arrayCategorias.forEach((categoria) =>{
     categorias +=     `<label>
     <input type="checkbox" name="categorys" value="${categoria}" id="${categoria}" 
-    class="sonCheck" onClick=recorrerCategorias()>
+    class="sonCheck" onClick=dataFilter()>
     ${categoria}
     </label>`
   })
   
   
   
-  function recorrerCategorias(){
+  // function recorrerCategorias(){
    
-    let checks = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(each => each.value)
+  //   let chekboxesChecked = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(elemento => elemento.value)
   
   
-  eventosFiltrados = eventosFuturos.filter((tarjeta) => checks.includes(tarjeta.category))
-  if(eventosFiltrados.length>0){
-    limpiarTarjetas()
-    dibujarTarjetas(eventosFiltrados)
-  }else{
-    limpiarTarjetas()
-    dibujarTarjetas(eventosFuturos)
-  }
+  // eventosFiltrados = eventosFuturos.filter((tarjeta) => chekboxesChecked.includes(tarjeta.category))
+  // if(eventosFiltrados.length>0){
+  //   limpiarTarjetas()
+  //   dibujarTarjetas(eventosFiltrados)
+  // }else{
+  //   limpiarTarjetas()
+  //   dibujarTarjetas(eventosFuturos)
+  // }
   
   
   
-  }
+  // }
 
 rowCategorias.innerHTML = categorias
 rowTarjetas.innerHTML = tarjetas
 
-function buscarPalabras(){
-  let eventosBuscados = eventosFuturos.filter((tarjeta) => tarjeta.name.toLowerCase().includes(buscador.value.toLowerCase()) || 
-  tarjeta.description.toLowerCase().includes(buscador.value.toLowerCase()))
-  if(eventosBuscados.length === 0){ 
-    limpiarTarjetas()
-    dibujarTarjetas(eventosFuturos);
+// function buscarPalabras(){
+//   let eventosBuscados = eventosFuturos.filter((tarjeta) => tarjeta.name.toLowerCase().includes(buscador.value.toLowerCase()) || 
+//   tarjeta.description.toLowerCase().includes(buscador.value.toLowerCase()))
+//   if(eventosBuscados.length === 0){ 
+//     limpiarTarjetas()
+//     dibujarTarjetas(eventosFuturos);
     
-    window.alert("NO SE ENCONTRARON COINCIDENCIAS");
-  }else if ( buscador.value.trim().length === 0){
-    limpiarTarjetas()
-    dibujarTarjetas(eventosFuturos);
+//     window.alert("NO SE ENCONTRARON COINCIDENCIAS");
+//   }else if ( buscador.value.trim().length === 0){
+//     limpiarTarjetas()
+//     dibujarTarjetas(eventosFuturos);
     
-  }else{
-    limpiarTarjetas()
-    dibujarTarjetas(eventosBuscados)
+//   }else{
+//     limpiarTarjetas()
+//     dibujarTarjetas(eventosBuscados)
    
-  }
+//   }
   
-  }
+//   }
 
 
   function seeDetail(id) {

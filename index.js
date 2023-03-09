@@ -18,30 +18,43 @@ data.events.forEach((tarjeta) => {
 arrayCategorias.forEach((categoria) =>{
   categorias +=     `<label>
   <input type="checkbox" name="categorys" value="${categoria}" id="${categoria}" 
-  class="sonCheck" onClick=recorrerCategorias()>
+  class="sonCheck" onClick=dataFilter()>
   ${categoria}
   </label>`
 })
 
-
-
-function recorrerCategorias(){
- 
-  let checks = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(each => each.value)
-
-
-eventosFiltrados = data.events.filter((tarjeta) => checks.includes(tarjeta.category))
-if(eventosFiltrados.length>0){
+function dataFilter(){
+  let chekboxesChecked = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(elemento => elemento.value)
+  eventosFiltrados = data.events.filter( tarjeta =>{
+    return (tarjeta.name.toLowerCase().includes(buscador.value.toLowerCase()) || 
+            tarjeta.description.toLowerCase().includes(buscador.value.toLowerCase())
+           )
+        && (  chekboxesChecked.length === 0 || 
+              chekboxesChecked.includes(tarjeta.category ) )             }     
+  )
   limpiarTarjetas()
   dibujarTarjetas(eventosFiltrados)
-}else{
-  limpiarTarjetas()
-  dibujarTarjetas(data.events)
 }
 
 
 
-}
+// function recorrerCategorias(){
+ 
+//   let checks = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(each => each.value)
+
+
+// eventosFiltrados = data.events.filter((tarjeta) => checks.includes(tarjeta.category))
+// if(eventosFiltrados.length>0){
+//   limpiarTarjetas()
+//   dibujarTarjetas(eventosFiltrados)
+// }else{
+//   limpiarTarjetas()
+//   dibujarTarjetas(data.events)
+// }
+
+
+
+// }
 
 
 
@@ -75,27 +88,27 @@ function limpiarTarjetas(){
 }
 
 
-///////////////BUSCADOR
-//campoBus.addEventListener("change", ()=>{
-  function buscarPalabras(){
-  let eventosBuscados = data.events.filter((tarjeta) => tarjeta.name.toLowerCase().includes(buscador.value.toLowerCase()) || 
-  tarjeta.description.toLowerCase().includes(buscador.value.toLowerCase()))
-  if(eventosBuscados.length === 0){ 
-    limpiarTarjetas()
-    dibujarTarjetas(data.events);
+// ///////////////BUSCADOR
+// //campoBus.addEventListener("change", ()=>{
+//   function buscarPalabras(){
+//   let eventosBuscados = data.events.filter((tarjeta) => tarjeta.name.toLowerCase().includes(buscador.value.toLowerCase()) || 
+//   tarjeta.description.toLowerCase().includes(buscador.value.toLowerCase()))
+//   if(eventosBuscados.length === 0){ 
+//     limpiarTarjetas()
+//     dibujarTarjetas(data.events);
     
-    window.alert("NO SE ENCONTRARON COINCIDENCIAS");
-  }else if ( buscador.value.trim().length === 0){
-    limpiarTarjetas()
-    dibujarTarjetas(data.events);
+//     window.alert("NO SE ENCONTRARON COINCIDENCIAS");
+//   }else if ( buscador.value.trim().length === 0){
+//     limpiarTarjetas()
+//     dibujarTarjetas(data.events);
     
-  }else{
-    limpiarTarjetas()
-    dibujarTarjetas(eventosBuscados)
+//   }else{
+//     limpiarTarjetas()
+//     dibujarTarjetas(eventosBuscados)
    
-  }
+//   }
   
-  }
+//   }
   
 //}
   //)
