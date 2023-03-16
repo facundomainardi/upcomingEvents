@@ -1,17 +1,46 @@
 const rowTarjetas = document.querySelector("#cajas")
 const rowCategorias = document.querySelector("#categorias")
 let arrayCategorias = [];
+let eventosTraidos = [];
+let eventosPasados = [];
 let categorias = " ";
-
+let dateEvents
 let tarjetas = " ";
 
-let eventosPasados = data.events.filter(tarjeta => tarjeta.date < data.currentDate)
-dibujarTarjetas(eventosPasados)
-//limpiarTarjetas()
-eventosPasados.forEach((tarjeta) => {
-  if (!arrayCategorias.includes(tarjeta.category)) {
-    arrayCategorias.push(tarjeta.category);
-}})
+
+traerDatos()
+
+limpiarTarjetas()
+
+function traerDatos(){
+  // fetch('./data.json') 
+ fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(response => response.json())
+  .then(datosApi =>{
+     // console.log(datosApi)
+      dateEvents = datosApi.currentDate
+      eventosTraidos = datosApi.events
+     // console.log(eventosTraidos)
+      eventosPasados = eventosTraidos.filter(tarjeta => tarjeta.date < dateEvents)
+      dibujarTarjetas(eventosPasados)
+
+      eventosPasados.forEach((tarjeta) => {
+        if (!arrayCategorias.includes(tarjeta.category)) {
+          arrayCategorias.push(tarjeta.category);
+      }})
+      arrayCategorias.forEach((categoria) =>{
+        categorias +=     `<label>
+        <input type="checkbox" name="categorys" value="${categoria}" id="${categoria}" 
+        class="sonCheck" onClick=dataFilter()>
+        ${categoria}
+        </label>`
+      })
+      rowCategorias.innerHTML = categorias
+  })
+  .catch(error => console.log(error.message))
+}
+
+
 
 function dibujarTarjetas(arrayActual){
  
@@ -39,13 +68,7 @@ function dibujarTarjetas(arrayActual){
   }
   
 
-  arrayCategorias.forEach((categoria) =>{
-    categorias +=     `<label>
-    <input type="checkbox" name="categorys" value="${categoria}" id="${categoria}" 
-    class="sonCheck" onClick=dataFilter()>
-    ${categoria}
-    </label>`
-  })
+ 
   
   function dataFilter(){
     let chekboxesChecked = Array.from(document.querySelectorAll(`.sonCheck:checked`) ).map(elemento => elemento.value)
